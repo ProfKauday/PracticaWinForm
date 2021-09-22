@@ -94,12 +94,25 @@ namespace WindowsFormsApp1
 
 
             //Valida el DNI si esta vacio o si el dato no es numerico
-            if (txtDni.Text.Trim() == "" || !Int32.TryParse(txtDni.Text, out int result))
+            // if (txtDni.Text.Trim() == "" || !Int32.TryParse(txtDni.Text, out int result))
+            //{
+            // MessageBox.Show("El dato DNI es incorrecto o esta vacio");
+            // txtDni.Focus();
+            // datoValido = false;
+            // }
+            try
             {
-                MessageBox.Show("El dato DNI es incorrecto o esta vacio");
-                txtDni.Focus();
+                Int32.Parse(txtDni.Text);
+                
+                
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("El dato DNI es incorrecto o esta vacio"); 
                 datoValido = false;
             }
+            
             return datoValido;
         }
 
